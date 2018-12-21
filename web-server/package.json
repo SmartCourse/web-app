@@ -1,0 +1,62 @@
+{
+  "name": "smartcourse-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "npm run build && cross-env NODE_ENV=dev npm-run-all -p start serve:client",
+    "start": "node bin/start",
+    "serve:client": "vue-cli-service serve",
+    "build-local": "cross-env NODE_ENV=development vue-cli-service build",
+    "build-staging": "cross-env NODE_ENV=staging vue-cli-service build",
+    "build-prod": "cross-env NODE_ENV=production vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node NODE_ENV=production vue-cli-service build",
+    "build": "npm run build:server -- --silent && npm run build-prod -- --no-clean --silent",
+    "lint": "vue-cli-service lint --fix",
+    "test:unit": "vue-cli-service test:unit",
+    "test": "npm run lint && npm run test:unit"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.5.0",
+    "material-icons": "^0.2.3",
+    "v-tooltip": "^2.0.0-rc.33",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.21",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-mocha": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/eslint-config-standard": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
+    "date-fns": "^2.0.0-alpha.26",
+    "eslint": "^4.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "lint-staged": "^7.2.2",
+    "lodash.merge": "^4.6.1",
+    "npm-run-all": "^4.1.5",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
