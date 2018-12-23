@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
+const favicon = require('serve-favicon')
 var proxy = require('http-proxy-middleware')
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -8,6 +9,7 @@ const devServerBaseURL = process.env.DEV_SERVER_BASE_URL || 'http://localhost'
 const devServerPort = process.env.DEV_SERVER_PORT || 8081
 
 const app = express()
+app.use(favicon('./public/favicon.ico'))
 
 function createRenderer(bundle, options) {
   return createBundleRenderer(

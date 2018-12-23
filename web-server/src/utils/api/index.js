@@ -2,7 +2,7 @@ import APIError from './errors'
 import { getAuthHeaders } from './auth'
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3000' /*process && process.env && process.env.NODE_ENV === 'development'
+const API_URL = 'http://localhost:3000/api' /*process && process.env && process.env.NODE_ENV === 'development'
   ? 'http://localhost:3000/api' : (process.env.NODE_ENV === 'staging'
     ? 'https://smartcourse-staging.azurewebsites.net/api'
     : 'https://smartcourse.me/api')
@@ -49,7 +49,6 @@ export function createApi(store) {
             ...options.headers,
             ...headers
           },
-          mode: options.mode,
           data,
           method
         }))
